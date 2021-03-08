@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dbmodel.*;
+import Übung02.model.*;
 
 import com.google.gson.Gson;
 import Übung02.model.Artikel;

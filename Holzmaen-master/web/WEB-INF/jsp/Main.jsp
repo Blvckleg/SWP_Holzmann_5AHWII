@@ -234,6 +234,7 @@
 
         setContentById('ArtikelName',act_artikel.ueberschrift);
         setContentById('ArtikelText', act_artikel.langtext);
+
         ReadKommentareVomArtikel(act_artikel.id);
 
     }
@@ -242,9 +243,9 @@
         var http = new XMLHttpRequest();
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                var arr = JSON.parse(this.responseText);
+                let arr = JSON.parse(this.responseText);
                 artikelListe = arr;
-                var htmlcode = ArtikelArrayFormatieren(arr);
+                let htmlcode = ArtikelArrayFormatieren(arr);
                 setContentById('ArtikelListe',htmlcode);
                 if (arr.length > 0) {
                     ArtikelAnzeigen(0);
@@ -253,7 +254,7 @@
             }
         };
         http.open("POST", "ReadArtikel", true);
-        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        http.setRequestHeader("Content-type", ,"application/x-www-form-urlencoded");
         http.send("themenId="+themenid);
     }
 
