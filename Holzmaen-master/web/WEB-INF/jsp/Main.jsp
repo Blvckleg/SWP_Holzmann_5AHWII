@@ -254,7 +254,7 @@
             }
         };
         http.open("POST", "ReadArtikel", true);
-        http.setRequestHeader("Content-type", ,"application/x-www-form-urlencoded");
+        http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         http.send("themenId="+themenid);
     }
 
@@ -262,11 +262,10 @@
         // alert(index);
         var act_artikel = artikelListe[index];
 
-        setContentById('ArtikelName',act_artikel.ueberschrift);
+        setContentById('ArtikelName', act_artikel.ueberschrift);
         setContentById('ArtikelText', act_artikel.langtext);
-
         ReadKommentareVomArtikel(act_artikel.id);
-
+    }
 </script>
 </body>
 </html>
