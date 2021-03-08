@@ -234,10 +234,37 @@
 
         setContentById('ArtikelName',act_artikel.ueberschrift);
         setContentById('ArtikelText', act_artikel.langtext);
+        ReadKommentareVomArtikel(act_artikel.id);
 
-        // kommt später: ReadKommentareVomArtikel(act_artikel.id);
-        // Reicht für diese Woche.
     }
+
+    function ReadKommentareVomArtikel(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var arr = JSON.parse(this.responseText);
+                artikelListe = arr;
+                var htmlcode = ArtikelArrayFormatieren(arr);
+                setContentById('ArtikelListe',htmlcode);
+                if (arr.length > 0) {
+                    ArtikelAnzeigen(0);
+
+                }
+            }
+        };
+        xhttp.open("POST", "ReadArtikel", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("themenId="+themenid);
+    }
+
+    function ArtikelAnzeigen(index) {
+        // alert(index);
+        var act_artikel = artikelListe[index];
+
+        setContentById('ArtikelName',act_artikel.ueberschrift);
+        setContentById('ArtikelText', act_artikel.langtext);
+
+        ReadKommentareVomArtikel(act_artikel.id);
 
 </script>
 </body>
